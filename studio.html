@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#120a19">
+  <title>爱情网页 · 内容工作室</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <header class="studio-header">
+    <div>
+      <span class="studio-mark">L · M · H</span>
+      <h1>爱情网页内容工作室</h1>
+      <p>在手机上新增、修改和发布文字、图片与视频。</p>
+    </div>
+    <div class="header-actions">
+      <a href="./" target="_blank" rel="noopener">查看网页</a>
+      <a href="admin.html">密码管理</a>
+      <button id="logoutButton" type="button" hidden>退出登录</button>
+    </div>
+  </header>
+
+  <main class="studio-main">
+    <section class="panel auth-panel" id="authPanel">
+      <p class="eyebrow">ADMIN SIGN IN</p>
+      <h2>管理员登录</h2>
+      <p id="authIntro">首次使用请注册邮箱账户；如果邮箱需要确认，请在同一台手机上打开确认邮件。</p>
+      <div class="auth-tabs" role="tablist" aria-label="登录方式">
+        <button class="tab-button active" id="loginTab" type="button">登录</button>
+        <button class="tab-button" id="signupTab" type="button">首次注册</button>
+      </div>
+      <form id="authForm" class="stack-form">
+        <label for="authEmail">邮箱</label>
+        <input id="authEmail" type="email" autocomplete="email" required placeholder="name@example.com">
+        <label for="authPassword">密码</label>
+        <input id="authPassword" type="password" minlength="8" autocomplete="current-password" required>
+        <button class="primary-button" id="authSubmit" type="submit">登录工作室</button>
+      </form>
+      <details class="claim-help" id="claimHelp" hidden>
+        <summary>专用管理员凭证没有自动识别？</summary>
+        <label for="claimTokenInput">粘贴一次性管理员凭证</label>
+        <input id="claimTokenInput" type="password" autocomplete="off">
+        <button class="secondary-button" id="saveClaimButton" type="button">保存凭证</button>
+      </details>
+      <p class="message" id="authMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="studio-grid" id="editorArea" hidden>
+      <section class="panel editor-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">ADD A MEMORY</p>
+            <h2 id="editorTitle">新增内容</h2>
+          </div>
+          <button class="text-button" id="cancelEditButton" type="button" hidden>取消编辑</button>
+        </div>
+
+        <form id="contentForm" class="stack-form">
+          <input id="contentId" type="hidden">
+          <label for="contentKind">内容类型</label>
+          <select id="contentKind" required>
+            <option value="story">爱情故事</option>
+            <option value="photo">照片回忆</option>
+            <option value="timeline">恋爱时间线</option>
+            <option value="video">视频回忆</option>
+            <option value="letter">更多情书</option>
+            <option value="promise">未来约定</option>
+          </select>
+
+          <label for="contentTitle">标题</label>
+          <input id="contentTitle" maxlength="100" required placeholder="例如：第一次一起看日落">
+
+          <label for="contentDate">日期（可选）</label>
+          <input id="contentDate" type="date">
+
+          <label for="contentBody">文字内容</label>
+          <textarea id="contentBody" rows="6" maxlength="4000" placeholder="写下想记录的话……"></textarea>
+
+          <label for="mediaUrl">图片或视频链接（可选）</label>
+          <input id="mediaUrl" type="url" inputmode="url" placeholder="https://…">
+
+          <label for="mediaFile">或者上传图片/小型视频</label>
+          <input id="mediaFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm">
+          <p class="field-help">支持 JPG、PNG、WebP、GIF、MP4、WebM，单个文件不超过 20MB。较大的视频建议粘贴链接。</p>
+
+          <div class="form-row">
+            <label for="sortOrder">显示顺序</label>
+            <input id="sortOrder" type="number" value="0" step="1">
+            <label class="check-label"><input id="published" type="checkbox" checked> 立即发布</label>
+          </div>
+
+          <button class="primary-button" id="saveContentButton" type="submit">保存并发布</button>
+          <p class="message" id="editorMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel library-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">YOUR MEMORIES</p>
+            <h2>已添加内容</h2>
+          </div>
+          <button class="secondary-button" id="refreshButton" type="button">刷新</button>
+        </div>
+        <div class="content-list" id="contentList">
+          <p class="empty-state">正在读取内容……</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="auth-config.js"></script>
+  <script src="studio.js"></script>
+</body>
+</html>

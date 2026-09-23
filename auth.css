@@ -43,4 +43,5 @@ details { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px
 summary { color: var(--gold); cursor: pointer; }
 .compact-form { margin-top: 14px; }
 .back-link { display: inline-block; margin-top: 20px; color: var(--gold); text-decoration: none; }
+.studio-link { display: block; margin-top: 20px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 12px; color: var(--gold); text-align: center; text-decoration: none; }
 @media (max-width: 560px) { .auth-card { padding: 30px 22px; border-radius: 18px; } }

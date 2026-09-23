@@ -7,7 +7,8 @@
   const adminPanel = document.getElementById("adminPasswordPanel");
   const message = document.getElementById("adminMessage");
   const hashParams = new URLSearchParams(location.hash.slice(1));
-  const setupToken = hashParams.get("setup") || "";
+  const queryParams = new URLSearchParams(location.search);
+  const setupToken = hashParams.get("setup") || queryParams.get("setup") || "";
   history.replaceState(null, "", location.pathname);
 
   function setMessage(text, type = "") {
