@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>爱情网页 · 密码管理</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page admin-page">
+  <main class="auth-shell">
+    <section class="auth-card admin-card" aria-labelledby="adminTitle">
+      <div class="auth-mark">L · M · H</div>
+      <p class="auth-eyebrow">PASSWORD CONTROL</p>
+      <h1 id="adminTitle">爱情网页密码管理</h1>
+      <p class="auth-copy" id="adminIntro">正在检查密码状态……</p>
+
+      <form id="setupForm" class="auth-form" hidden>
+        <h2>首次设置</h2>
+        <label for="initialAccess">网页访问密码</label>
+        <input id="initialAccess" type="password" minlength="8" autocomplete="new-password" required>
+        <label for="initialAccessConfirm">再次输入访问密码</label>
+        <input id="initialAccessConfirm" type="password" minlength="8" autocomplete="new-password" required>
+        <label for="initialAdmin">管理密码</label>
+        <input id="initialAdmin" type="password" minlength="10" autocomplete="new-password" required>
+        <label for="initialAdminConfirm">再次输入管理密码</label>
+        <input id="initialAdminConfirm" type="password" minlength="10" autocomplete="new-password" required>
+        <p class="field-help">管理密码用于以后修改访问密码，请勿与访问密码相同。</p>
+        <button class="primary-button" type="submit">保存首次设置</button>
+      </form>
+
+      <form id="changeAccessForm" class="auth-form" hidden>
+        <h2>修改网页访问密码</h2>
+        <label for="adminPassword">管理密码</label>
+        <input id="adminPassword" type="password" minlength="10" autocomplete="current-password" required>
+        <label for="newAccess">新的访问密码</label>
+        <input id="newAccess" type="password" minlength="8" autocomplete="new-password" required>
+        <label for="newAccessConfirm">再次输入新访问密码</label>
+        <input id="newAccessConfirm" type="password" minlength="8" autocomplete="new-password" required>
+        <button class="primary-button" type="submit">修改访问密码</button>
+      </form>
+
+      <details id="adminPasswordPanel" hidden>
+        <summary>修改管理密码</summary>
+        <form id="changeAdminForm" class="auth-form compact-form">
+          <label for="oldAdmin">当前管理密码</label>
+          <input id="oldAdmin" type="password" minlength="10" autocomplete="current-password" required>
+          <label for="newAdmin">新的管理密码</label>
+          <input id="newAdmin" type="password" minlength="10" autocomplete="new-password" required>
+          <label for="newAdminConfirm">再次输入新管理密码</label>
+          <input id="newAdminConfirm" type="password" minlength="10" autocomplete="new-password" required>
+          <button class="secondary-button" type="submit">修改管理密码</button>
+        </form>
+      </details>
+
+      <p class="form-message" id="adminMessage" role="status" aria-live="polite"></p>
+      <a class="back-link" href="./">← 返回网页</a>
+    </section>
+  </main>
+  <script src="auth-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
